@@ -6,7 +6,7 @@ var gulp = require('gulp'),
       js: 'assets/js/',
       jsApp: 'assets/js/app.js',
       jsSrc: 'assets/jsx/app.jsx',
-      jsTests: '__tests__/spec/**/*.spec.js',
+      jsTests: '__tests__/**/*.js',
       jsx: 'assets/jsx/',
       jsxFiles: 'assets/jsx/**/*.jsx',
       less: 'assets/less/app.less',
@@ -109,18 +109,10 @@ gulp.task('cssmin', [
 gulp.task('jest', function () {
   gulp.src('__tests__')
     .pipe(require('gulp-jest')({
-      unmockedModulePathPatterns: [
-        'node_modules/react'
-      ],
-      testDirectoryName: 'spec',
+      scriptPreprocessor: './support/preprocessor.js',
       testPathIgnorePatterns: [
-        'node_modules',
-        'spec/support'
-      ],
-      moduleFileExtensions: [
-        'js',
-        'jsx',
-        'json'
+        '__tests__/support',
+        'node_modules'
       ]
     }));
 });
