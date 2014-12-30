@@ -12,6 +12,7 @@ var gulp = require('gulp'),
       less: 'assets/less/app.less',
       lessAll: 'assets/less/**/*.less'
     },
+    istanbul = require('gulp-istanbul'),
     path = require('path'),
     port = 8000,
     replace = require('gulp-replace'),
@@ -106,15 +107,25 @@ gulp.task('cssmin', [
     .pipe(gulp.dest(files.dist + files.css));
 });
 
-gulp.task('jest', function () {
-  gulp.src('__tests__')
-    .pipe(require('gulp-jest')({
-      scriptPreprocessor: './support/preprocessor.js',
-      testPathIgnorePatterns: [
-        '__tests__/support',
-        'node_modules'
-      ]
-    }));
+gulp.task('jest', function (cb) {
+  gulp.src(files.jsxFiles)
+    .pipe(require('gulp-react')())
+    .pipe(istanbul())
+    .pipe(gulp.dest(files.js))
+    .on('finish', function () {
+      gulp.src('__tests__')
+        .pipe(require('gulp-jest')({
+          collectCoverage: true,
+
+          scriptPreprocessor: './support/preprocessor.js',
+          testPathIgnorePatterns: [
+            '__tests__/support',
+            'node_modules'
+          ]
+        }))
+        .pipe(istanbul.writeReports())
+        .on('end', cb);
+    });
 });
 
 gulp.task('jscs', function () {
