@@ -1,5 +1,5 @@
 {
-  "name": "generator-refluxify",
+  "name": "refluxify",
   "version": "0.0.0",
   "scripts": {
     "build": "gulp build",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ahmednuaman/generator-refluxify.git"
+    "url": "git@github.com:ahmednuaman/refluxify.git"
   },
   "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)",
   "devDependencies": {
