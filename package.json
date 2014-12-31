@@ -33,6 +33,7 @@
     "openurl": "^1.1.0",
     "react-tools": "^0.12.2",
     "reactify": "^0.17.1",
+    "require-all": "^1.0.0",
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
