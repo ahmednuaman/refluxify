@@ -1,4 +1,3 @@
-generator-refluxify
-===================
+# Refluxify
 
 Go refluxify yo'self
