@@ -4,7 +4,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp",
-    "test": "gulp test"
+    "test": "gulp browserify"
   },
   "repository": {
     "type": "git",
