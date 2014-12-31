@@ -106,22 +106,15 @@ gulp.task('cssmin', [
     .pipe(gulp.dest(files.dist + files.css));
 });
 
-gulp.task('jest', function (cb) {
-  gulp.src(files.jsxFiles)
-    .pipe(gulp.dest(files.js))
-    .on('finish', function () {
-      gulp.src('__tests__')
-        .pipe(require('gulp-jest')({
-          collectCoverage: true,
-
-          scriptPreprocessor: './support/preprocessor.js',
-          testPathIgnorePatterns: [
-            '__tests__/support',
-            'node_modules'
-          ]
-        }))
-        .on('end', cb);
-    });
+gulp.task('jest', function () {
+  gulp.src('__tests__')
+    .pipe(require('gulp-jest')({
+      scriptPreprocessor: './support/preprocessor.js',
+      testPathIgnorePatterns: [
+        '__tests__/support',
+        'node_modules'
+      ]
+    }));
 });
 
 gulp.task('jscs', function () {
