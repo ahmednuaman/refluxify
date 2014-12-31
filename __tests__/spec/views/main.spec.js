@@ -1,4 +1,4 @@
-var file = '../../../assets/js/views/main.jsx';
+var file = '../../../assets/jsx/views/main.jsx';
 
 jest.dontMock(file);
 describe('Views/Main', function () {
